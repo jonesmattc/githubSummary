@@ -27,13 +27,13 @@ class RepoListViewController: UITableViewController {
         var dataVal: NSData =  NSURLConnection.sendSynchronousRequest(request, returningResponse: response, error:nil)!
         var jsonResult: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(dataVal, options: NSJSONReadingOptions.MutableContainers, error: nil) as! [NSDictionary]
         for jsonRepo in jsonResult {
-                            let name = jsonRepo.objectForKey("name") as! String
-                          let numStars = jsonRepo.objectForKey("stargazers_count") as! NSNumber
-                          let numFavs = jsonRepo.objectForKey("watchers_count") as! NSNumber
-                        let language = jsonRepo.objectForKey("language") as? String
+            let name = jsonRepo.objectForKey("name") as! String
+            let numStars = jsonRepo.objectForKey("stargazers_count") as! NSNumber
+            let numFavs = jsonRepo.objectForKey("watchers_count") as! NSNumber
+            let language = jsonRepo.objectForKey("language") as? String
             let repoLink = jsonRepo.objectForKey("html_url") as! String
             let repo = Repo(name: name, numStars: numStars, numFavs: numFavs, language: language, repoLink: repoLink)
-                        self.repos.append(repo)
+            self.repos.append(repo)
         }
 //        let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
 //            var jsonResult: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! [NSDictionary]
